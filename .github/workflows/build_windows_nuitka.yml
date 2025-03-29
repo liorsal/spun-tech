@@ -30,7 +30,7 @@ jobs:
         python -m nuitka --follow-imports --standalone --windows-disable-console --include-data-dir=templates=templates --include-data-dir=data=data gui.py
         
     - name: Upload executable
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: windows-executable-nuitka
-        path: gui.dist/ 
+        path: gui.dist/
