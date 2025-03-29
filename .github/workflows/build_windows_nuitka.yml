@@ -1,0 +1,36 @@
+name: Build Windows Executable with Nuitka
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install nuitka
+        
+    - name: Build with Nuitka
+      run: |
+        python -m nuitka --follow-imports --standalone --windows-disable-console --include-data-dir=templates=templates --include-data-dir=data=data gui.py
+        
+    - name: Upload executable
+      uses: actions/upload-artifact@v3
+      with:
+        name: windows-executable-nuitka
+        path: gui.dist/ 

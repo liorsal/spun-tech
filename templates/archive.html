@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ארכיון PDF</title>
+</head>
+<body>
+    <h1>ארכיון PDF</h1>
+    <ul>
+        {% for file in files %}
+        <li><a href="/data/archive/{{ file }}" target="_blank">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="/">חזור לטופס</a>
+</body>
+</html> 

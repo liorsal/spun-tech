@@ -1,0 +1,3 @@
+([('gui',
+   '/Users/guestisr/Downloads/complete_flask_digital_form/dist/gui',
+   'EXECUTABLE')],)
